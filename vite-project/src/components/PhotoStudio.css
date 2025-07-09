@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.studio-slide-in {
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+.photoStudio {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: relative;
+  background-image: url('/images/soft.png'); /* relative to /public */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.studio-container {
+  background: #0a0a0a;
+  position: absolute;
+  left: 390px;
+  top: 70px;
+  padding: 20px;
+  border-radius: 20px;
+  width: 600px;
+  margin-top: 30px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.studio-webcam {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.webcam-view {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: gold;
+  color: black;
+}
+
+/* Capture Button */
+.capture-btn {
+  background: gold;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  box-shadow: 0 0 10px gold;
+  cursor: pointer;
+}
+.noir {
+  filter: grayscale(1) contrast(1.4);
+}
+
+._90s {
+  filter: sepia(0.25) contrast(1.2) brightness(1.1) hue-rotate(-5deg) saturate(0.7);
+}
+._2000s {
+  filter: contrast(1.3) saturate(1.6) brightness(1.05) hue-rotate(10deg);
+}
+
+
+.rainbow {
+  filter: hue-rotate(90deg);
+}
+
+.glitch {
+  filter: contrast(1.5) saturate(2);
+}
+
+.crosshatch {
+  filter: grayscale(0.5) blur(1px);
+}
+
+.fisheye {
+  filter: brightness(1.1);
+}
+
+.studio-webcam._90s::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('https://www.transparenttextures.com/patterns/noise.png'); /* or use your own grain png */
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+.studio-webcam._2000s::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+/* Photo Strip */
+.photostrip-frame {
+  background: white;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.strip-photo-wrapper {
+  margin: 8px 0;
+  transform: rotate(-1deg);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.strip-photo-img {
+  width: 220px;
+  border-radius: 12px;
+}
+
+.photostrip-caption {
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+  margin-top: 12px;
+  color: #333;
+}
+
+.countdown-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  z-index: 10;
+}
+.result-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 2rem;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+.slide-down {
+  animation: slideDown 0.8s ease forwards;
+  margin-bottom: 2rem;
+}
+
+.result-photo-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.result-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.result-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 30px;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.strip-wrapper {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.photo-strip {
+  display: flex;
+  gap: 10px;
+  animation: slideDown 0.6s ease-out;
+}
+
+.strip-photo {
+  width: 100px;
+  height: auto;
+  border-radius: 6px;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.studio-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.result-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideInFromLeft 0.7s ease forwards;
+  padding: 40px 20px;
+}
+
+.photo-strip {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  animation: slideDown 0.6s ease forwards;
+  margin-bottom: 30px;
+}
+
+.strip-photo {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* .result-buttons {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+} */
+
+/* .result-buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+} */
+.reshoot{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: #5C4033;
+    cursor: pointer;
+}
+.download{
+     width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: #5C4033;
+    cursor: pointer;
+}
+.studio-result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.result-controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-direction: column;
+    position : absolute;
+    left: 440px;
+}
+.photostrip-frame {
+  position: absolute;
+  left: 100px;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.studio-result{
+    background-color: #5C4033;
+    height: 700px;
+    width: 700px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 400px;
+    top: 40px;
+}
+/* Animate the full result screen from top */
+.studio-result.slide-in-top {
+  animation: slideDown 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+
+.strip-slide-in {
+  opacity: 1;
+  transform: translateY(0);
+}
